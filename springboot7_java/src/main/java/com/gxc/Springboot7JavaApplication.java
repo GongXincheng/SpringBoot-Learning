@@ -18,7 +18,7 @@ public class Springboot7JavaApplication implements CommandLineRunner {
   private UserService userService;
 
   public static void main(String[] args) {
-    //方式二：
+    //方式二： 
     // 返回Spring容器对象
 //    ConfigurableApplicationContext context =
 //        SpringApplication.run(Springboot7JavaApplication.class, args);
