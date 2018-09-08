@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
+</head>
+<body>
+  <h3>用户列表</h3>
+  <hr/>
+
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>User Name</th>
+      <th>Password</th>
+      <th>Age</th>
+      <th>Reg Time</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  th:each="user : ${users}">
+      <th scope="row" th:text="${user.id}">1</th>
+      <td th:text="${user.userName}">neo</td>
+      <td th:text="${user.passWord}">Otto</td>
+      <td th:text="${user.age}">6</td>
+      <td th:text="${#dates.format(user.regTime, 'yyyy/MM/dd HH:mm:ss')}"></td>
+    </tr>
+    </tbody>
+  </table>
+  <div th:include="page :: pager"></div>
+</body>
+</html>

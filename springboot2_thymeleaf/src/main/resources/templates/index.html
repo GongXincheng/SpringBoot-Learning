@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>首页</title>
+</head>
+<body>
+  <!--<div th:include="layout/footer :: copyright "></div> &lt;!&ndash; include 是加载 &ndash;&gt;-->
+  <!--<div th:replace="layout/footer :: copyright "></div> &lt;!&ndash; replace 是替换 &ndash;&gt;-->
+
+  <div th:replace="layout/layout :: header"></div>
+  <div th:replace="layout/layout :: left"></div>
+
+  <div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>用户名</th>
+          <th>密码</th>
+          <th>邮箱</th>
+          <th>注册时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="user, status : ${userList}">
+          <td th:text="${status.count}"></td>
+          <td th:text="${user.userName}"></td>
+          <td th:text="${user.passWord}"></td>
+          <td th:text="${user.email}"></td>
+          <td th:text="${user.regTime}"></td>
+          <!--<td th:text="${#dates.format(${user.regTime},'yyyy-MM-dd')}"></td>-->
+          <td>
+            <a th:href="@{/delete/{id}(id = ${user.id})}">删除</a>
+            <button type="button" th:onclick="|btnDelete(${user.id},'${user.userName}')|">Button</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div th:if="${userList.size() > 100}" th:text="大于100"></div>
+    <div th:if="${userList.size() <= 100}" th:text="小于100"></div>
+  </div>
+
+  <div th:replace="layout/layout :: footer"></div>
+
+
+</body>
+<script>
+  function btnDelete(id,username){
+    alert(id + "：" + username);
+  }
+</script>
+</html>

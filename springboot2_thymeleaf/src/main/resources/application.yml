@@ -1,0 +1,37 @@
+
+
+spring:
+  # DataSource
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: root
+
+  # JPA
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+  # thymeleaf
+  thymeleaf:
+    cache: false
+
+  # 热部署
+  devtools:
+    restart:
+      enabled: true
+
+  # 激活指定的配置文件
+#  profiles:
+#    active: xxx
+
+server:
+  # tomcat
+  tomcat:
+    uri-encoding: UTF-8
+  # servlet
+  servlet:
+    context-path: /
+
