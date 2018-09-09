@@ -7,7 +7,7 @@
   <groupId>com.gxc</groupId>
   <artifactId>springboot2_jsp</artifactId>
   <version>1.0.0</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <name>jsp</name>
 
