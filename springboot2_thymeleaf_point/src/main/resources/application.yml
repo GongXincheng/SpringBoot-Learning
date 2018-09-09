@@ -1,3 +1,16 @@
 spring:
   thymeleaf:
     cache: false # 关闭模板缓存
+    # mode: LEGACYHTML5 # 使用遗留的html5去掉html标签的校验
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: root
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+

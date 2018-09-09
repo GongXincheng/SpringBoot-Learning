@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Thymeleaf测试</title>
+</head>
+<body>
+
+<p th:text="${data}">Hello World ！</p>
+
+<hr/>
+
+<p th:text="${hello}"></p>
+
+<form th:action="@{'/submit/{userId}'(userId = ${userId})} " th:method="POST">
+  <input type="text" placeholder="Username" name="username">
+  <button>提交</button>
+</form>
+<hr>
+<!-- 加 / ：项目根 -->
+<form th:action="@{'/submit'(userId = ${userId}, hello = ${hello})} " th:method="POST">
+  <input type="text" placeholder="Username" name="username">
+  <button>提交</button>
+</form>
+<hr>
+<!-- 不加 / ：相对 -->
+<form th:action="@{'submit'(userId = ${userId}, hello = ${hello})} " th:method="POST">
+  <input type="text" placeholder="Username" name="username">
+  <button>提交</button>
+</form>
+<hr>
+<!--<p th:each="user , vs: ${userList}">-->
+<div th:each="user: ${userList}">
+
+  <div th:if="${user.id % 2 == 0}" style="background: aqua">
+    <!--序号1：<span style="color: red" th:text="${vs.count * 100}"></span>-->
+    序号2：<span style="color: red" th:text="${userStat.count}"></span>
+    id：<span th:text="${user.id}"></span>
+    username：<span th:text="${user.userName}"></span>
+    <!--username：<span th:text="${#dates.format(user.addDate,'yyyy-MM-dd HH:mm:ss')}"></span>-->
+    regTime：<span th:text="${user.regTime}"></span>
+    nickName：<span th:text="${user.nickName}"></span>
+    email：<span th:text="${user.email}"></span>
+  </div>
+
+  <div th:unless="${user.id % 2 == 0}" style="background: goldenrod">
+    <!--序号1：<span style="color: red" th:text="${vs.count * 100}"></span>-->
+    序号2：<span style="color: red" th:text="${userStat.count}"></span>
+    id：<span th:text="${user.id}"></span>
+    username：<span th:text="${user.userName}"></span>
+    <!--username：<span th:text="${#dates.format(user.addDate,'yyyy-MM-dd HH:mm:ss')}"></span>-->
+    regTime：<span th:text="${user.regTime}"></span>
+    nickName：<span th:text="${user.nickName}"></span>
+    email：<span th:text="${user.email}"></span>
+  </div>
+
+</div>
+
+</body>
+</html>
