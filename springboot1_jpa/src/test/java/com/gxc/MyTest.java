@@ -3,6 +3,7 @@ package com.gxc;
 import com.gxc.dao.UserRepository;
 import com.gxc.entity.User;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +12,18 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 /**
  * @author 宫新程
@@ -92,5 +99,25 @@ public class MyTest {
     }
   }
 
+  // 动态查询（多条件查询）
+  @Test
+  public void testSpecificationExecutor(User user) {
+    List<User> userList = this.userRepository.findAll(new Specification<User>() {
+      @Override
+      public Predicate toPredicate(
+          Root<User> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
+        Predicate predicate = cb.conjunction();
+        if (user != null) {
+          if (StringUtils.isNotBlank(user.getUserName())) {
+            predicate.getExpressions().add(cb.like(root.get("userName"), user.getUserName()));
+          }
+        }
+        return predicate;
+      }
+    });
 
+    for (User user1 : userList) {
+      System.out.println(user1);
+    }
+  }
 }

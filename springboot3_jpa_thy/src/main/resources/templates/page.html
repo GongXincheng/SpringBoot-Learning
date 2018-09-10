@@ -12,7 +12,7 @@
 
       <li><a href="#" th:href="@{${pageUrl}(page=0)}">首页</a></li>
       <li th:if="${users.hasPrevious()}">
-        <a href="#" th:href="@{${pageUrl}(page=${users.number-1})}">上一页</a></li>
+        <a href="#" th:href="@{${pageUrl}(page=${users.number - 1})}">上一页</a></li>
 
       <!--总页数小于等于10-->
       <div th:if="${(users.totalPages le 10) and (users.totalPages gt 0)}" th:remove="tag">
@@ -28,10 +28,10 @@
 
       <!-- 总数数大于10时 -->
       <div th:if="${users.totalPages gt 10}" th:remove="tag">
-        <li th:if="${users.number-2 ge 0}">
-          <a href="#" th:href="@{${pageUrl}(page=${users.number}-2)}" th:text="${users.number-1}"></a>
+        <li th:if="${users.number - 2 ge 0}">
+          <a href="#" th:href="@{${pageUrl}(page=${users.number}-2)}" th:text="${users.number - 1}"></a>
         </li>
-        <li th:if="${users.number-1 ge 0}">
+        <li th:if="${users.number - 1 ge 0}">
           <a href="#" th:href="@{${pageUrl}(page=${users.number}-1)}" th:text="${users.number}"></a>
         </li>
         <li class="active">
@@ -48,7 +48,7 @@
       <li th:if="${users.hasNext()}">
         <a href="#" th:href="@{${pageUrl}(page=${users.number+1})}">下一页</a></li>
       <li>
-        <a href="#" th:href="${users.totalPages le 0 ? pageUrl+'page=0':pageUrl+'&amp;page='+(users.totalPages-1)}">尾页</a>
+        <a href="#" th:href="${users.totalPages le 0 ? pageUrl+'page=0':pageUrl+'&amp;page='+(users.totalPages - 1)}">尾页</a>
       </li>
       <li><span th:utext="'共'+${users.totalPages}+'页 / '+${users.totalElements}+' 条'"></span></li>
     </ul>

@@ -53,8 +53,37 @@
     nickName：<span th:text="${user.nickName}"></span>
     email：<span th:text="${user.email}"></span>
   </div>
-
 </div>
+
+
+<!-- th:onclick ：注意使用 ||  或者 方法名需要加引号-->
+<button type="button" th:onclick="|btnClick(${userList.size()}, '${hello}')|">点击</button>
+<script>
+  function btnClick(size,msg) {
+    alert(size + "：" + msg);
+  }
+</script>
+
+<!-- 内联文本 -->
+<div th:inline="text">
+  [[${hello}]]
+</div>
+
+<!-- 内联脚本 -->
+<script th:inline="javascript" type="text/javascript">
+  var hello = [[ ${hello} ]];
+  alert(hello);
+</script>
+
+<!-- 表达式基本对象：#request，#session -->
+request:<p th:text="${#request.getAttribute('hello')}"></p>
+<p th:inline="text">
+  [[ ${#session.id} ]] <br/>
+  [[ ${#session.getAttribute("loginUser").userName} ]]
+</p>
+
+<!-- 表达式功能对象 -->
+<p th:text="${#dates.format(nowTime,'yyyy-MM-dd HH:mm:ss')}"></p>
 
 </body>
 </html>

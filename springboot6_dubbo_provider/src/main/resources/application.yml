@@ -6,5 +6,16 @@
 #    registry: zookeeper://127.0.0.1:2181
 
 # 内嵌 tomcat 端口
-#server:
-#  port: 8080
+server:
+  port: 8080
+
+
+spring:
+
+  #SpringBoot 2.0之后，使用dubbo 需要加application.name
+  application:
+    name: springboot6_dubbo_provider
+
+  dubbo:
+    appname: springboot6_dubbo_provider
+    registry: zookeeper://127.0.0.1:2181
