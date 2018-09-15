@@ -37,11 +37,11 @@ management:
   endpoints:
     web:
       exposure:
-        include: /*  # yml 配置文件为：/*
+        include: ['*']  # yml 配置文件为：/*
 
-  server:
-    port: 8080
-    servlet:
-      context-path: /
+server:
+  port: 8080
+  servlet:
+    context-path: /
 
 

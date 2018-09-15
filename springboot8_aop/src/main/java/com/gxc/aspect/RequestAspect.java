@@ -48,7 +48,7 @@ public class RequestAspect {
     logger.info("方法执行后....");
   }
 
-  @AfterReturning(returning = "result",pointcut = "log()")
+  @AfterReturning(returning = "result", pointcut = "log()")
   public void doReturn(Object result) {
     logger.info("方法方法的返回值.... {}", result);
   }
