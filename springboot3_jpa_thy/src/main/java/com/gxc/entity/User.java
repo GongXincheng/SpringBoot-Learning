@@ -15,7 +15,9 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 @Table(name = "user")
 public class User implements Serializable {
 
-  @Id @GeneratedValue private long id;
+  @Id
+  @GeneratedValue
+  private long id;
 
   @Column(nullable = false, unique = true)
   private String userName;

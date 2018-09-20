@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Redis Controller .
+ * Redis controller .
  * @author 宫新程
  * @date 2018/9/8 14:15
  */

@@ -12,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * @author 宫新程
@@ -33,5 +36,11 @@ public class UserController {
     Page<User> pageBean = userRepository.findAll(pageable);
     model.addAttribute("users", pageBean);
     return "userList";
+  }
+
+  @RequestMapping("/notnull")
+  @ResponseBody
+  public List<User> test() {
+    return userRepository.findUsersByUserNameNotNull();
   }
 }
