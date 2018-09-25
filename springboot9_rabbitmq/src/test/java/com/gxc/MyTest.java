@@ -1,12 +1,15 @@
 package com.gxc;
 
 import com.gxc.hello.HelloSender;
+import com.gxc.many.GxcSender;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.annotation.Resource;
 
 /**
  * @author 宫新程
@@ -19,10 +22,21 @@ public class MyTest {
   @Autowired
   private HelloSender helloSender;
 
+  @Resource
+  private GxcSender gxcSender;
+
   @Test
   public void testSender() throws InterruptedException {
     this.helloSender.send();
     Thread.sleep(1000L);
+  }
+
+  @Test
+  public void testOneToMany() throws InterruptedException {
+    for (int i = 0; i < 10; i++){
+      gxcSender.send(i);
+    }
+    Thread.sleep(10000L);
   }
 
 }

@@ -17,4 +17,11 @@ public class RabbitConfig {
   public Queue helloQueue() {
     return new Queue("hello");
   }
+
+  @Bean
+  public Queue gxcQueue() {
+    return new Queue("gxc");
+  }
+
+
 }
