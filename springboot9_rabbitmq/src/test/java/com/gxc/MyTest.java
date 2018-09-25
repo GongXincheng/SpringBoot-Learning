@@ -1,8 +1,10 @@
 package com.gxc;
 
+import com.gxc.entity.User;
 import com.gxc.hello.HelloSender;
 import com.gxc.many.GxcSender;
 import com.gxc.many.GxcSender2;
+import com.gxc.object.ObjectSender;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,6 +25,7 @@ public class MyTest {
   @Autowired private HelloSender helloSender;
   @Resource private GxcSender gxcSender;
   @Resource private GxcSender2 gxcSender2;
+  @Resource private ObjectSender objectSender;
 
   @Test // 一对一
   public void testSender() throws InterruptedException {
@@ -46,4 +49,12 @@ public class MyTest {
     }
     Thread.sleep(10000L);
   }
+
+  @Test // 发送对象
+  public void testObject() throws InterruptedException {
+    User user = new User("GXC", 28);
+    objectSender.send(user);
+    Thread.sleep(10000L);
+  }
+
 }

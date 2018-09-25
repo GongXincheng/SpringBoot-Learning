@@ -23,5 +23,10 @@ public class RabbitConfig {
     return new Queue("gxc");
   }
 
+  @Bean
+  public Queue objectQueue() {
+    return new Queue("object");
+  }
+
 
 }
