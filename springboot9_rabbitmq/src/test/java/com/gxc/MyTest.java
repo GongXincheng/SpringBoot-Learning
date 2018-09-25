@@ -6,6 +6,7 @@ import com.gxc.hello.HelloSender;
 import com.gxc.many.GxcSender;
 import com.gxc.many.GxcSender2;
 import com.gxc.object.ObjectSender;
+import com.gxc.test.AdminTestSender;
 import com.gxc.topic.TopicSender;
 
 import org.junit.Test;
@@ -30,6 +31,7 @@ public class MyTest {
   @Resource private ObjectSender objectSender;
   @Resource private TopicSender topicSender;
   @Resource private FanoutSender fanoutSender;
+  @Resource private AdminTestSender adminTestSender;
 
   @Test // 一对一
   public void testSender() throws InterruptedException {
@@ -73,5 +75,13 @@ public class MyTest {
     fanoutSender.send();
     Thread.sleep(1000l);
   }
+
+  @Test // TestAdminTemplement！ 重要
+  public void testAdminTemplement() throws Exception {
+    adminTestSender.sendMessage();
+    Thread.sleep(1000l);
+  }
+
+
 
 }
