@@ -2,6 +2,7 @@ package com.gxc;
 
 import com.gxc.hello.HelloSender;
 import com.gxc.many.GxcSender;
+import com.gxc.many.GxcSender2;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,24 +20,30 @@ import javax.annotation.Resource;
 @SpringBootTest
 public class MyTest {
 
-  @Autowired
-  private HelloSender helloSender;
+  @Autowired private HelloSender helloSender;
+  @Resource private GxcSender gxcSender;
+  @Resource private GxcSender2 gxcSender2;
 
-  @Resource
-  private GxcSender gxcSender;
-
-  @Test
+  @Test // 一对一
   public void testSender() throws InterruptedException {
     this.helloSender.send();
     Thread.sleep(1000L);
   }
 
-  @Test
+  @Test // 一对多
   public void testOneToMany() throws InterruptedException {
-    for (int i = 0; i < 10; i++){
+    for (int i = 0; i < 10; i++) {
       gxcSender.send(i);
     }
     Thread.sleep(10000L);
   }
 
+  @Test // 多对多
+  public void testManyToMany() throws InterruptedException {
+    for (int i = 0; i < 10; i++) {
+      gxcSender.send(i);
+      gxcSender2.send(i);
+    }
+    Thread.sleep(10000L);
+  }
 }
