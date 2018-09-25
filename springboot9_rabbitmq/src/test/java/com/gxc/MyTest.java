@@ -1,6 +1,7 @@
 package com.gxc;
 
 import com.gxc.entity.User;
+import com.gxc.fanout.FanoutSender;
 import com.gxc.hello.HelloSender;
 import com.gxc.many.GxcSender;
 import com.gxc.many.GxcSender2;
@@ -28,6 +29,7 @@ public class MyTest {
   @Resource private GxcSender2 gxcSender2;
   @Resource private ObjectSender objectSender;
   @Resource private TopicSender topicSender;
+  @Resource private FanoutSender fanoutSender;
 
   @Test // 一对一
   public void testSender() throws InterruptedException {
@@ -63,6 +65,12 @@ public class MyTest {
   public void topic1() throws Exception {
     //topicSender.send1(); //两个接收者都能收到
     topicSender.send2(); //只有接收者二能收到
+    Thread.sleep(1000l);
+  }
+
+  @Test // Fanout
+  public void fanoutSender() throws Exception {
+    fanoutSender.send();
     Thread.sleep(1000l);
   }
 
