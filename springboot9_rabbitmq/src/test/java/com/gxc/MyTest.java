@@ -5,6 +5,7 @@ import com.gxc.hello.HelloSender;
 import com.gxc.many.GxcSender;
 import com.gxc.many.GxcSender2;
 import com.gxc.object.ObjectSender;
+import com.gxc.topic.TopicSender;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,6 +27,7 @@ public class MyTest {
   @Resource private GxcSender gxcSender;
   @Resource private GxcSender2 gxcSender2;
   @Resource private ObjectSender objectSender;
+  @Resource private TopicSender topicSender;
 
   @Test // 一对一
   public void testSender() throws InterruptedException {
@@ -55,6 +57,13 @@ public class MyTest {
     User user = new User("GXC", 28);
     objectSender.send(user);
     Thread.sleep(10000L);
+  }
+
+  @Test // Topic
+  public void topic1() throws Exception {
+    //topicSender.send1(); //两个接收者都能收到
+    topicSender.send2(); //只有接收者二能收到
+    Thread.sleep(1000l);
   }
 
 }
