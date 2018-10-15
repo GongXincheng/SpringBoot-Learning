@@ -19,7 +19,9 @@ public class FanoutSender {
   public void send() {
     String context = "hi, fanout msg ";
     System.out.println("Sender : " + context);
-    amqpTemplate.convertAndSend("fanoutExchange","", context);
+    amqpTemplate.convertAndSend("fanoutExchange","fanout.A", context);
+    amqpTemplate.convertAndSend("fanoutExchange","fanout.B", context);
+    amqpTemplate.convertAndSend("fanoutExchange","fanout.C", context);
   }
 
 }
