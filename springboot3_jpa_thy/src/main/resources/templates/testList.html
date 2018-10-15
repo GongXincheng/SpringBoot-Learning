@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>测试List</title>
+</head>
+<body>
+
+<table>
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>UserName</th>
+    <th>Age</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each=" user : ${userList}">
+    <td th:text="${user.id}"></td>
+    <td th:text="${user.userName}"></td>
+    <td th:text="${user.age}"></td>
+  </tr>
+  </tbody>
+</table>
+
+<hr/>
+
+<div th:if="${num == 1}">sssss</div>
+
+<hr>
+<select>
+  <option th:each="user1 : ${userList}" th:text="${user1.userName}" th:selected="${user1.id == 5}"></option>
+</select>
+
+<ul>
+  <li th:each="user1 : ${userList}" th:text="${user1.userName}" ></li>
+</ul>
+</body>
+</html>

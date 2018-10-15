@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: springboot9_rabbitmq2
+
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+gxc:
+  rabbitmq:
+    hello-queue: hello
+    one-to-many-queue: oneToMany1
+    gxc1: gxc1
+    object: object1
+
+# 1、队列配置  QueueConfig.java
+# 2、创建消息发送者
+# 3、创建消息接收者

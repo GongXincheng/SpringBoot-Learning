@@ -35,10 +35,12 @@ public class AdminTestSender {
   public void initMq() {
     amqpAdmin = myAmqpAdmin;
     amqpTemplate = myAmqpTemplate;
+
     // 创建 DirectExchange 交换机
     DirectExchange directExchange = new DirectExchange(MQ_EXCHANGE, true, false);
     amqpAdmin.declareExchange(directExchange);
     logger.info("MQ初始化...");
+
     // 添加queue的名称
     String[] queueNames = new String[] {"com.gxc.test.gxcQueue"};
 
@@ -47,6 +49,7 @@ public class AdminTestSender {
       Queue queue = new Queue(queueName, true);
       amqpAdmin.declareQueue(queue);
       logger.info("MQ队列执行...");
+
       // 将交换机绑定队列
       Binding binding = BindingBuilder.bind(queue).to(directExchange).with(queueName);
       amqpAdmin.declareBinding(binding);
