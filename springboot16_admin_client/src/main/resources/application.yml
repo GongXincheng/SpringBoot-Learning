@@ -1,10 +1,10 @@
 spring:
-  thymeleaf:
-    cache: false
-
   boot:
     admin:
       url: http://localhost:8000
+
+  application:
+    name: springboot16_admin_client
 
 management:
   security:
